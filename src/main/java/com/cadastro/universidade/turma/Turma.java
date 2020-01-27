@@ -4,7 +4,7 @@ package com.cadastro.universidade.turma;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "colaborador")
+@Table(name = "turma")
 public class Turma {
 
     @Id
@@ -32,7 +32,7 @@ public class Turma {
         return periodo;
     }
 
-    public void setPeriodo(String nome) {
+    public void setPeriodo(String periodo) {
         this.periodo = periodo;
     }
 
