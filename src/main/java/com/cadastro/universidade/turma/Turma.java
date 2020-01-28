@@ -1,7 +1,12 @@
 package com.cadastro.universidade.turma;
 
 
+import com.cadastro.universidade.aluno.Aluno;
+import com.cadastro.universidade.bolitim.Boletim;
+import com.cadastro.universidade.professor.Professor;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "turma")
@@ -19,6 +24,15 @@ public class Turma {
 
     @Column(name = "sigla", nullable = false,  length = 100)
     private String sigla;
+
+    @ManyToMany(mappedBy = "turmaId" )
+    private List<Professor> professorId;
+
+    @OneToMany(mappedBy = "turmaId")
+    private List<Aluno> alunoId;
+
+    @OneToMany(mappedBy = "turmaId")
+    private List<Boletim> boletimId;
 
     public Long getId() {
         return id;
@@ -52,6 +66,30 @@ public class Turma {
         this.sigla = sigla;
     }
 
+    public List<Professor> getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(List<Professor> professorId) {
+        this.professorId = professorId;
+    }
+
+    public List<Aluno> getAlunoId() {
+        return alunoId;
+    }
+
+    public void setAlunoId(List<Aluno> alunoId) {
+        this.alunoId = alunoId;
+    }
+
+    public List<Boletim> getBoletimId() {
+        return boletimId;
+    }
+
+    public void setBoletimId(List<Boletim> boletimId) {
+        this.boletimId = boletimId;
+    }
+
     @Override
     public String toString() {
         return "Turma{" +
@@ -59,6 +97,9 @@ public class Turma {
                 ", periodo='" + periodo + '\'' +
                 ", serie='" + serie + '\'' +
                 ", sigla='" + sigla + '\'' +
+                ", professorId=" + professorId +
+                ", alunoId=" + alunoId +
+                ", boletimId=" + boletimId +
                 '}';
     }
 }

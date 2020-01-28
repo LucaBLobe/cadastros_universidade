@@ -1,16 +1,16 @@
-package com.cadastro.universidade.aluno;
+package com.cadastro.universidade.disciplina;
 
+import com.cadastro.universidade.aluno.Aluno;
 import com.cadastro.universidade.bolitim.Boletim;
-import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.notas.Notas;
-import com.cadastro.universidade.turma.Turma;
+import com.cadastro.universidade.professor.Professor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "aluno")
-public class Aluno {
+@Table(name = "disciplina")
+public class Disciplina {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,17 +20,17 @@ public class Aluno {
     private String nome;
 
     @ManyToOne
-    private Turma turmaId;
+    private Professor professorId;
+
+    @ManyToMany(mappedBy = "disciplinaId")
+    private List<Aluno> alunoId;
 
     @ManyToMany
-    @JoinTable(name = "aluno_disciplina", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
-    private List<Disciplina> disciplinaId;
-
-    @ManyToMany
-    @JoinTable(name = "aluno_nota", joinColumns = {@JoinColumn(name = "nota_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
+    @JoinTable(name = "disciplina_nota", joinColumns = {@JoinColumn(name = "nota_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
     private List<Notas> notaId;
 
-    @OneToMany(mappedBy = "alunoId")
+    @ManyToMany
+    @JoinTable(name = "disciplina_boletim", joinColumns = {@JoinColumn(name = "boletim_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
     private List<Boletim> boletimId;
 
     public Long getId() {
@@ -49,20 +49,20 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public Turma getTurmaId() {
-        return turmaId;
+    public Professor getProfessorId() {
+        return professorId;
     }
 
-    public void setTurmaId(Turma turmaId) {
-        this.turmaId = turmaId;
+    public void setProfessorId(Professor professorId) {
+        this.professorId = professorId;
     }
 
-    public List<Disciplina> getDisciplinaId() {
-        return disciplinaId;
+    public List<Aluno> getAlunoId() {
+        return alunoId;
     }
 
-    public void setDisciplinaId(List<Disciplina> disciplinaId) {
-        this.disciplinaId = disciplinaId;
+    public void setAlunoId(List<Aluno> alunoId) {
+        this.alunoId = alunoId;
     }
 
     public List<Notas> getNotaId() {
@@ -83,11 +83,11 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" +
+        return "Disciplina{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", turmaId=" + turmaId +
-                ", disciplinaId=" + disciplinaId +
+                ", professorId=" + professorId +
+                ", alunoId=" + alunoId +
                 ", notaId=" + notaId +
                 ", boletimId=" + boletimId +
                 '}';

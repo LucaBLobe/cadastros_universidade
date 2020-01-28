@@ -5,33 +5,40 @@ import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.turma.Turma;
 
-import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "aluno")
-public class Aluno {
+public class AlunoDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "nome", nullable = false,  length = 100)
     private String nome;
-
-    @ManyToOne
     private Turma turmaId;
-
-    @ManyToMany
-    @JoinTable(name = "aluno_disciplina", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
     private List<Disciplina> disciplinaId;
-
-    @ManyToMany
-    @JoinTable(name = "aluno_nota", joinColumns = {@JoinColumn(name = "nota_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
     private List<Notas> notaId;
-
-    @OneToMany(mappedBy = "alunoId")
     private List<Boletim> boletimId;
+
+    public AlunoDTO() {
+    }
+
+    public AlunoDTO(Long id, String nome, Turma turmaId, List<Disciplina> disciplinaId, List<Notas> notaId, List<Boletim> boletimId) {
+        this.id = id;
+        this.nome = nome;
+        this.turmaId = turmaId;
+        this.disciplinaId = disciplinaId;
+        this.notaId = notaId;
+        this.boletimId = boletimId;
+    }
+
+
+    public static AlunoDTO of (Aluno aluno){
+        return new AlunoDTO(
+                aluno.getId(),
+                aluno.getNome(),
+                aluno.getTurmaId(),
+                aluno.getDisciplinaId(),
+                aluno.getNotaId(),
+                aluno.getBoletimId()
+        );
+    }
 
     public Long getId() {
         return id;
@@ -83,7 +90,7 @@ public class Aluno {
 
     @Override
     public String toString() {
-        return "Aluno{" +
+        return "AlunoDTO{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", turmaId=" + turmaId +
