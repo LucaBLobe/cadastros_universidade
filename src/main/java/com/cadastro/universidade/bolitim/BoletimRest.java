@@ -1,5 +1,4 @@
-package com.cadastro.universidade.turma;
-
+package com.cadastro.universidade.bolitim;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/turma")
-public class TurmaRest {
+@RequestMapping("/boletins")
+public class BoletimRest {
 
-
-    private final TurmaService turmaService;
+    private final BoletimService boletimService;
 
     @Autowired
-    public TurmaRest(TurmaService turmaService) {
-        this.turmaService = turmaService;
+    public BoletimRest(BoletimService boletimService) {
+        this.boletimService = boletimService;
     }
 
     @PostMapping()
-    public TurmaDTO save(@RequestBody TurmaDTO turmaDTO) {
-        return this.turmaService.save(turmaDTO);
+    public BoletimDTO save(@RequestBody BoletimDTO boletimDTO){
+        return this.boletimService.save(boletimDTO);
     }
 }
