@@ -2,7 +2,6 @@ package com.cadastro.universidade.turma;
 
 
 import com.cadastro.universidade.aluno.Aluno;
-import com.cadastro.universidade.bolitim.Boletim;
 import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.professor.Professor;
 
