@@ -9,10 +9,9 @@ import com.cadastro.universidade.turma.Turma;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "boletim")
-public class Boletim {
 
+public class Boletim {
+/*
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,7 +25,7 @@ public class Boletim {
     @ManyToMany(mappedBy = "boletimId")
     private List<Disciplina> disciplinaId;
 
-    @ManyToMany(mappedBy = "boletimId")
+    @OneToMany(mappedBy = "boletimId")
     private List<Notas> notaId;
 
     public Long getId() {
@@ -78,5 +77,5 @@ public class Boletim {
                 ", disciplinaId=" + disciplinaId +
                 ", notaId=" + notaId +
                 '}';
-    }
+    }*/
 }

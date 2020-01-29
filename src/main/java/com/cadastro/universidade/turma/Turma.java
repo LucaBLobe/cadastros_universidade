@@ -3,6 +3,7 @@ package com.cadastro.universidade.turma;
 
 import com.cadastro.universidade.aluno.Aluno;
 import com.cadastro.universidade.bolitim.Boletim;
+import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.professor.Professor;
 
 import javax.persistence.*;
@@ -31,8 +32,10 @@ public class Turma {
     @OneToMany(mappedBy = "turmaId")
     private List<Aluno> alunoId;
 
-    @OneToMany(mappedBy = "turmaId")
-    private List<Boletim> boletimId;
+    @ManyToMany
+    @JoinTable(name = "disciplina_turma", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="turma_id")})
+    private List<Disciplina> disciplinaId;
+
 
     public Long getId() {
         return id;
@@ -82,14 +85,6 @@ public class Turma {
         this.alunoId = alunoId;
     }
 
-    public List<Boletim> getBoletimId() {
-        return boletimId;
-    }
-
-    public void setBoletimId(List<Boletim> boletimId) {
-        this.boletimId = boletimId;
-    }
-
     @Override
     public String toString() {
         return "Turma{" +
@@ -99,7 +94,6 @@ public class Turma {
                 ", sigla='" + sigla + '\'' +
                 ", professorId=" + professorId +
                 ", alunoId=" + alunoId +
-                ", boletimId=" + boletimId +
                 '}';
     }
 }

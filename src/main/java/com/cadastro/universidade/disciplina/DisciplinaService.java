@@ -24,8 +24,7 @@ public class DisciplinaService {
         Disciplina disciplina = new Disciplina();
         disciplina.setNome(disciplinaDTO.getNome());
         disciplina.setAlunoId(disciplinaDTO.getAlunoId());
-        disciplina.setNotaId(disciplinaDTO.getNotaId());
-        disciplina.setBoletimId(disciplinaDTO.getBoletimId());
+        disciplina.setTurmaId(disciplinaDTO.getTurmaId());
 
         disciplina = this.iDisciplinaRepository.save(disciplina);
         return disciplinaDTO.of(disciplina);

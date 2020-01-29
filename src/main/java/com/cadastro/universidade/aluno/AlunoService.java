@@ -23,7 +23,7 @@ public class AlunoService {
         aluno.setNome(alunoDTO.getNome());
         aluno.setTurmaId(alunoDTO.getTurmaId());
         aluno.setDisciplinaId(alunoDTO.getDisciplinaId());
-        aluno.setNotaId(alunoDTO.getNotaId());
+
 
 
         aluno = this.iAlunoRepository.save(aluno);

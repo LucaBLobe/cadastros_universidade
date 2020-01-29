@@ -1,8 +1,6 @@
 package com.cadastro.universidade.aluno;
 
-import com.cadastro.universidade.bolitim.Boletim;
 import com.cadastro.universidade.disciplina.Disciplina;
-import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.turma.Turma;
 
 import javax.persistence.*;
@@ -20,18 +18,13 @@ public class Aluno {
     private String nome;
 
     @ManyToOne
+    @JoinColumn(name = "turma_id", referencedColumnName = "id")
     private Turma turmaId;
 
     @ManyToMany
     @JoinTable(name = "aluno_disciplina", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
     private List<Disciplina> disciplinaId;
 
-    @ManyToMany
-    @JoinTable(name = "aluno_nota", joinColumns = {@JoinColumn(name = "nota_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
-    private List<Notas> notaId;
-
-    @OneToMany(mappedBy = "alunoId")
-    private List<Boletim> boletimId;
 
     public Long getId() {
         return id;
@@ -65,21 +58,6 @@ public class Aluno {
         this.disciplinaId = disciplinaId;
     }
 
-    public List<Notas> getNotaId() {
-        return notaId;
-    }
-
-    public void setNotaId(List<Notas> notaId) {
-        this.notaId = notaId;
-    }
-
-    public List<Boletim> getBoletimId() {
-        return boletimId;
-    }
-
-    public void setBoletimId(List<Boletim> boletimId) {
-        this.boletimId = boletimId;
-    }
 
     @Override
     public String toString() {
@@ -88,8 +66,6 @@ public class Aluno {
                 ", nome='" + nome + '\'' +
                 ", turmaId=" + turmaId +
                 ", disciplinaId=" + disciplinaId +
-                ", notaId=" + notaId +
-                ", boletimId=" + boletimId +
                 '}';
     }
 }

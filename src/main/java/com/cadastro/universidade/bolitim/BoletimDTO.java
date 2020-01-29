@@ -8,7 +8,7 @@ import com.cadastro.universidade.turma.Turma;
 import java.util.List;
 
 public class BoletimDTO {
-
+/*
     private Long id;
     private Turma turmaId;
     private Aluno alunoId;
@@ -85,5 +85,5 @@ public class BoletimDTO {
                 ", disciplinaId=" + disciplinaId +
                 ", notaId=" + notaId +
                 '}';
-    }
+    }*/
 }

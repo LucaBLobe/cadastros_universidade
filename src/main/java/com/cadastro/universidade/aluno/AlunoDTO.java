@@ -1,8 +1,6 @@
 package com.cadastro.universidade.aluno;
 
-import com.cadastro.universidade.bolitim.Boletim;
 import com.cadastro.universidade.disciplina.Disciplina;
-import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.turma.Turma;
 
 import java.util.List;
@@ -13,30 +11,24 @@ public class AlunoDTO {
     private String nome;
     private Turma turmaId;
     private List<Disciplina> disciplinaId;
-    private List<Notas> notaId;
-    private List<Boletim> boletimId;
+
 
     public AlunoDTO() {
     }
 
-    public AlunoDTO(Long id, String nome, Turma turmaId, List<Disciplina> disciplinaId, List<Notas> notaId, List<Boletim> boletimId) {
+    public AlunoDTO(Long id, String nome, Turma turmaId, List<Disciplina> disciplinaId) {
         this.id = id;
         this.nome = nome;
         this.turmaId = turmaId;
         this.disciplinaId = disciplinaId;
-        this.notaId = notaId;
-        this.boletimId = boletimId;
     }
-
 
     public static AlunoDTO of (Aluno aluno){
         return new AlunoDTO(
                 aluno.getId(),
                 aluno.getNome(),
                 aluno.getTurmaId(),
-                aluno.getDisciplinaId(),
-                aluno.getNotaId(),
-                aluno.getBoletimId()
+                aluno.getDisciplinaId()
         );
     }
 
@@ -72,22 +64,6 @@ public class AlunoDTO {
         this.disciplinaId = disciplinaId;
     }
 
-    public List<Notas> getNotaId() {
-        return notaId;
-    }
-
-    public void setNotaId(List<Notas> notaId) {
-        this.notaId = notaId;
-    }
-
-    public List<Boletim> getBoletimId() {
-        return boletimId;
-    }
-
-    public void setBoletimId(List<Boletim> boletimId) {
-        this.boletimId = boletimId;
-    }
-
     @Override
     public String toString() {
         return "AlunoDTO{" +
@@ -95,8 +71,6 @@ public class AlunoDTO {
                 ", nome='" + nome + '\'' +
                 ", turmaId=" + turmaId +
                 ", disciplinaId=" + disciplinaId +
-                ", notaId=" + notaId +
-                ", boletimId=" + boletimId +
                 '}';
     }
 }

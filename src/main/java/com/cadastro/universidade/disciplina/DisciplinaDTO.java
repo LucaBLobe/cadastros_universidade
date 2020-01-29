@@ -1,9 +1,9 @@
 package com.cadastro.universidade.disciplina;
 
 import com.cadastro.universidade.aluno.Aluno;
-import com.cadastro.universidade.bolitim.Boletim;
 import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.professor.Professor;
+import com.cadastro.universidade.turma.Turma;
 
 import java.util.List;
 
@@ -13,19 +13,17 @@ public class DisciplinaDTO {
     private String nome;
     private Professor professorId;
     private List<Aluno> alunoId;
-    private List<Notas> notaId;
-    private List<Boletim> boletimId;
+    private List<Turma> turmaId;
 
     public DisciplinaDTO() {
     }
 
-    public DisciplinaDTO(Long id, String nome, Professor professorId, List<Aluno> alunoId, List<Notas> notaId, List<Boletim> boletimId) {
+    public DisciplinaDTO(Long id, String nome, Professor professorId, List<Aluno> alunoId, List<Turma> turmaId) {
         this.id = id;
         this.nome = nome;
         this.professorId = professorId;
         this.alunoId = alunoId;
-        this.notaId = notaId;
-        this.boletimId = boletimId;
+        this.turmaId = turmaId;
     }
 
     public static DisciplinaDTO of(Disciplina disciplina) {
@@ -34,8 +32,8 @@ public class DisciplinaDTO {
                 disciplina.getNome(),
                 disciplina.getProfessorId(),
                 disciplina.getAlunoId(),
-                disciplina.getNotaId(),
-                disciplina.getBoletimId()
+                disciplina.getTurmaId()
+
         );
 
     }
@@ -72,20 +70,12 @@ public class DisciplinaDTO {
         this.alunoId = alunoId;
     }
 
-    public List<Notas> getNotaId() {
-        return notaId;
+    public List<Turma> getTurmaId() {
+        return turmaId;
     }
 
-    public void setNotaId(List<Notas> notaId) {
-        this.notaId = notaId;
-    }
-
-    public List<Boletim> getBoletimId() {
-        return boletimId;
-    }
-
-    public void setBoletimId(List<Boletim> boletimId) {
-        this.boletimId = boletimId;
+    public void setTurmaId(List<Turma> turmaId) {
+        this.turmaId = turmaId;
     }
 
     @Override
@@ -95,8 +85,7 @@ public class DisciplinaDTO {
                 ", nome='" + nome + '\'' +
                 ", professorId=" + professorId +
                 ", alunoId=" + alunoId +
-                ", notaId=" + notaId +
-                ", boletimId=" + boletimId +
+                ", turmaId=" + turmaId +
                 '}';
     }
 }

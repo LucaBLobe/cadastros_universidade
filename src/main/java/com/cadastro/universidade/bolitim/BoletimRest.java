@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/boletins")
+//@RestController
+//@RequestMapping("/boletins")
 public class BoletimRest {
-
+/*
     private final BoletimService boletimService;
 
     @Autowired
@@ -20,5 +20,5 @@ public class BoletimRest {
     @PostMapping()
     public BoletimDTO save(@RequestBody BoletimDTO boletimDTO){
         return this.boletimService.save(boletimDTO);
-    }
+    }*/
 }

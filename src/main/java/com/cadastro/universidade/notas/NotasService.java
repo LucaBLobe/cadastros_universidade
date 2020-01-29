@@ -23,7 +23,7 @@ public class NotasService {
         notas.setNota(notasDTO.getNota());
         notas.setAlunoId(notasDTO.getAlunoId());
         notas.setDisciplinaId(notasDTO.getDisciplinaId());
-        notas.setBoletimId(notasDTO.getBoletimId());
+
         notas = this.iNotasRepository.save(notas);
         return notasDTO.of(notas);
     }

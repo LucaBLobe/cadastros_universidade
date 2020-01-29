@@ -1,8 +1,6 @@
 package com.cadastro.universidade.professor;
 
-import com.cadastro.universidade.aluno.Aluno;
 import com.cadastro.universidade.disciplina.Disciplina;
-import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.turma.Turma;
 
 import java.util.List;

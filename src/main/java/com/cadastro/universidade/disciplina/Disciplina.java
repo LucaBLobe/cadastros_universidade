@@ -1,9 +1,8 @@
 package com.cadastro.universidade.disciplina;
 
 import com.cadastro.universidade.aluno.Aluno;
-import com.cadastro.universidade.bolitim.Boletim;
-import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.professor.Professor;
+import com.cadastro.universidade.turma.Turma;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,13 +24,8 @@ public class Disciplina {
     @ManyToMany(mappedBy = "disciplinaId")
     private List<Aluno> alunoId;
 
-    @ManyToMany
-    @JoinTable(name = "disciplina_nota", joinColumns = {@JoinColumn(name = "nota_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
-    private List<Notas> notaId;
-
-    @ManyToMany
-    @JoinTable(name = "disciplina_boletim", joinColumns = {@JoinColumn(name = "boletim_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
-    private List<Boletim> boletimId;
+    @ManyToMany(mappedBy = "disciplinaId")
+    private List<Turma> turmaId;
 
     public Long getId() {
         return id;
@@ -65,20 +59,12 @@ public class Disciplina {
         this.alunoId = alunoId;
     }
 
-    public List<Notas> getNotaId() {
-        return notaId;
+    public List<Turma> getTurmaId() {
+        return turmaId;
     }
 
-    public void setNotaId(List<Notas> notaId) {
-        this.notaId = notaId;
-    }
-
-    public List<Boletim> getBoletimId() {
-        return boletimId;
-    }
-
-    public void setBoletimId(List<Boletim> boletimId) {
-        this.boletimId = boletimId;
+    public void setTurmaId(List<Turma> turmaId) {
+        this.turmaId = turmaId;
     }
 
     @Override
@@ -88,8 +74,7 @@ public class Disciplina {
                 ", nome='" + nome + '\'' +
                 ", professorId=" + professorId +
                 ", alunoId=" + alunoId +
-                ", notaId=" + notaId +
-                ", boletimId=" + boletimId +
+                ", turmaId=" + turmaId +
                 '}';
     }
 }
