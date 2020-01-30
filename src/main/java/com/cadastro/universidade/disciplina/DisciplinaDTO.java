@@ -11,28 +11,23 @@ public class DisciplinaDTO {
 
     private Long id;
     private String nome;
-    private Professor professorId;
-    private List<Aluno> alunoId;
-    private List<Turma> turmaId;
+    private Long professorId;
+
 
     public DisciplinaDTO() {
     }
 
-    public DisciplinaDTO(Long id, String nome, Professor professorId, List<Aluno> alunoId, List<Turma> turmaId) {
+    public DisciplinaDTO(Long id, String nome, Long professorId) {
         this.id = id;
         this.nome = nome;
         this.professorId = professorId;
-        this.alunoId = alunoId;
-        this.turmaId = turmaId;
     }
 
     public static DisciplinaDTO of(Disciplina disciplina) {
         return new DisciplinaDTO(
                 disciplina.getId(),
                 disciplina.getNome(),
-                disciplina.getProfessorId(),
-                disciplina.getAlunoId(),
-                disciplina.getTurmaId()
+                disciplina.getProfessorId().getId()
 
         );
 
@@ -54,29 +49,15 @@ public class DisciplinaDTO {
         this.nome = nome;
     }
 
-    public Professor getProfessorId() {
+    public Long getProfessorId() {
         return professorId;
     }
 
-    public void setProfessorId(Professor professorId) {
+    public void setProfessorId(Long professorId) {
         this.professorId = professorId;
     }
 
-    public List<Aluno> getAlunoId() {
-        return alunoId;
-    }
 
-    public void setAlunoId(List<Aluno> alunoId) {
-        this.alunoId = alunoId;
-    }
-
-    public List<Turma> getTurmaId() {
-        return turmaId;
-    }
-
-    public void setTurmaId(List<Turma> turmaId) {
-        this.turmaId = turmaId;
-    }
 
     @Override
     public String toString() {
@@ -84,8 +65,6 @@ public class DisciplinaDTO {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", professorId=" + professorId +
-                ", alunoId=" + alunoId +
-                ", turmaId=" + turmaId +
                 '}';
     }
 }

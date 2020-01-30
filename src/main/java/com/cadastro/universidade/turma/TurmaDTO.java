@@ -1,20 +1,26 @@
 package com.cadastro.universidade.turma;
 
+import com.cadastro.universidade.disciplina.Disciplina;
+
+import java.util.List;
+
 public class TurmaDTO {
 
     private Long id;
     private String periodo;
     private String serie;
     private String sigla;
+    private List<Disciplina> disciplinaId;
 
     public TurmaDTO() {
     }
 
-    public TurmaDTO(Long id, String periodo, String serie, String sigla) {
+    public TurmaDTO(Long id, String periodo, String serie, String sigla, List<Disciplina> disciplinaId) {
         this.id = id;
         this.periodo = periodo;
         this.serie = serie;
         this.sigla = sigla;
+        this.disciplinaId = disciplinaId;
     }
 
     public static TurmaDTO of (Turma turma){
@@ -22,7 +28,8 @@ public class TurmaDTO {
                 turma.getId(),
                 turma.getPeriodo(),
                 turma.getSerie(),
-                turma.getSigla()
+                turma.getSigla(),
+                turma.getDisciplinaId()
         );
     }
 
@@ -58,6 +65,14 @@ public class TurmaDTO {
         this.sigla = sigla;
     }
 
+    public List<Disciplina> getDisciplinaId() {
+        return disciplinaId;
+    }
+
+    public void setDisciplinaId(List<Disciplina> disciplinaId) {
+        this.disciplinaId = disciplinaId;
+    }
+
     @Override
     public String toString() {
         return "TurmaDTO{" +
@@ -65,6 +80,7 @@ public class TurmaDTO {
                 ", periodo='" + periodo + '\'' +
                 ", serie='" + serie + '\'' +
                 ", sigla='" + sigla + '\'' +
+                ", disciplinaId=" + disciplinaId +
                 '}';
     }
 }

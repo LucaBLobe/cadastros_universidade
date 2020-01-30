@@ -7,13 +7,13 @@ public class NotasDTO {
 
     private Long id;
     private Double nota;
-    private Aluno alunoId;
-    private Disciplina disciplinaId;
+    private Long alunoId;
+    private Long disciplinaId;
 
     public NotasDTO() {
     }
 
-    public NotasDTO(Long id, Double nota, Aluno alunoId, Disciplina disciplinaId) {
+    public NotasDTO(Long id, Double nota, Long alunoId, Long disciplinaId) {
         this.id = id;
         this.nota = nota;
         this.alunoId = alunoId;
@@ -24,8 +24,8 @@ public class NotasDTO {
         return new NotasDTO(
                 notas.getId(),
                 notas.getNota(),
-                notas.getAlunoId(),
-                notas.getDisciplinaId()
+                notas.getAlunoId().getId(),
+                notas.getDisciplinaId().getId()
         );
     }
 
@@ -45,19 +45,19 @@ public class NotasDTO {
         this.nota = nota;
     }
 
-    public Aluno getAlunoId() {
+    public Long getAlunoId() {
         return alunoId;
     }
 
-    public void setAlunoId(Aluno alunoId) {
+    public void setAlunoId(Long alunoId) {
         this.alunoId = alunoId;
     }
 
-    public Disciplina getDisciplinaId() {
+    public Long getDisciplinaId() {
         return disciplinaId;
     }
 
-    public void setDisciplinaId(Disciplina disciplinaId) {
+    public void setDisciplinaId(Long disciplinaId) {
         this.disciplinaId = disciplinaId;
     }
 

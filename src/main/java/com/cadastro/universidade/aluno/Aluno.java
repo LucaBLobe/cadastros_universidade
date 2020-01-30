@@ -21,10 +21,6 @@ public class Aluno {
     @JoinColumn(name = "turma_id", referencedColumnName = "id")
     private Turma turmaId;
 
-    @ManyToMany
-    @JoinTable(name = "aluno_disciplina", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="aluno_id")})
-    private List<Disciplina> disciplinaId;
-
 
     public Long getId() {
         return id;
@@ -50,13 +46,6 @@ public class Aluno {
         this.turmaId = turmaId;
     }
 
-    public List<Disciplina> getDisciplinaId() {
-        return disciplinaId;
-    }
-
-    public void setDisciplinaId(List<Disciplina> disciplinaId) {
-        this.disciplinaId = disciplinaId;
-    }
 
 
     @Override
@@ -65,7 +54,6 @@ public class Aluno {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", turmaId=" + turmaId +
-                ", disciplinaId=" + disciplinaId +
                 '}';
     }
 }

@@ -25,14 +25,8 @@ public class Turma {
     @Column(name = "sigla", nullable = false,  length = 100)
     private String sigla;
 
-    @ManyToMany(mappedBy = "turmaId" )
-    private List<Professor> professorId;
-
-    @OneToMany(mappedBy = "turmaId")
-    private List<Aluno> alunoId;
-
     @ManyToMany
-    @JoinTable(name = "disciplina_turma", joinColumns = {@JoinColumn(name = "disciplina_id")}, inverseJoinColumns = {@JoinColumn(name="turma_id")})
+    @JoinTable(name = "disciplina_turma", joinColumns = {@JoinColumn(name = "turma_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
     private List<Disciplina> disciplinaId;
 
 
@@ -68,20 +62,12 @@ public class Turma {
         this.sigla = sigla;
     }
 
-    public List<Professor> getProfessorId() {
-        return professorId;
+    public List<Disciplina> getDisciplinaId() {
+        return disciplinaId;
     }
 
-    public void setProfessorId(List<Professor> professorId) {
-        this.professorId = professorId;
-    }
-
-    public List<Aluno> getAlunoId() {
-        return alunoId;
-    }
-
-    public void setAlunoId(List<Aluno> alunoId) {
-        this.alunoId = alunoId;
+    public void setDisciplinaId(List<Disciplina> disciplinaId) {
+        this.disciplinaId = disciplinaId;
     }
 
     @Override
@@ -91,8 +77,7 @@ public class Turma {
                 ", periodo='" + periodo + '\'' +
                 ", serie='" + serie + '\'' +
                 ", sigla='" + sigla + '\'' +
-                ", professorId=" + professorId +
-                ", alunoId=" + alunoId +
+                ", disciplinaId=" + disciplinaId +
                 '}';
     }
 }

@@ -17,12 +17,6 @@ public class Professor {
     @Column(name = "nome", nullable = false,  length = 100)
     private String nome;
 
-    @ManyToMany
-    @JoinTable(name = "professor_turma", joinColumns = {@JoinColumn(name = "turma_id")}, inverseJoinColumns = {@JoinColumn(name="professor_id")})
-    private List<Turma> turmaId;
-
-    @OneToMany(mappedBy = "professorId")
-    private List<Disciplina> disciplinas;
 
     public Long getId() {
         return id;
@@ -40,29 +34,13 @@ public class Professor {
         this.nome = nome;
     }
 
-    public List<Turma> getTurmaId() {
-        return turmaId;
-    }
 
-    public void setTurmaId(List<Turma> turmaId) {
-        this.turmaId = turmaId;
-    }
-
-    public List<Disciplina> getDisciplinas() {
-        return disciplinas;
-    }
-
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
-    }
 
     @Override
     public String toString() {
         return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", turmaId=" + turmaId +
-                ", disciplinas=" + disciplinas +
                 '}';
     }
 }
