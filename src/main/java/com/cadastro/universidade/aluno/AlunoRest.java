@@ -1,10 +1,11 @@
 package com.cadastro.universidade.aluno;
 
+//import com.cadastro.universidade.service.ReportService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.FileNotFoundException;
 
 @RestController
 @RequestMapping("/alunos")
@@ -16,15 +17,17 @@ public class AlunoRest {
     public AlunoRest(AlunoService alunoService) {
         this.alunoService = alunoService;
     }
+//    @Autowired
+//    private ReportService reportService;
+
 
     @PostMapping()
     public AlunoDTO save(@RequestBody AlunoDTO alunoDTO){
         return  this.alunoService.save(alunoDTO);
     }
 
-
-
-
-
-
+//    @GetMapping("/report/{format}")
+//    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
+//        return reportService.exportReport(format);
+//    }
 }

@@ -1,11 +1,14 @@
 package com.cadastro.universidade.notas;
 
 import com.cadastro.universidade.aluno.AlunoService;
+import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.disciplina.DisciplinaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class NotasService {
@@ -33,6 +36,14 @@ public class NotasService {
         notas = this.iNotasRepository.save(notas);
         return notasDTO.of(notas);
     }
+    public Notas findNotasById(Long id) {
+        Optional<Notas> notasOptional = this.iNotasRepository.findById(id);
+        if (notasOptional.isPresent()) {
+            return notasOptional.get();
+        }
+        throw new IllegalArgumentException(String.format("ID %s não existe", id));
+    }
+
 
 
 }
