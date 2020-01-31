@@ -11,7 +11,7 @@ import java.util.List;
 
 
 public class Boletim {
-/*
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -77,5 +77,5 @@ public class Boletim {
                 ", disciplinaId=" + disciplinaId +
                 ", notaId=" + notaId +
                 '}';
-    }*/
+    }
 }

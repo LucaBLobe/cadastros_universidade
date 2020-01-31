@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BoletimService {
-/*
+
     private static final Logger LOGGER = LoggerFactory.getLogger(BoletimService.class);
     private final IBoletimRepository iBoletimRepository;
 
@@ -28,5 +28,5 @@ public class BoletimService {
         boletim = this.iBoletimRepository.save(boletim);
         return boletimDTO.of(boletim);
 
-    }*/
+    }
 }
