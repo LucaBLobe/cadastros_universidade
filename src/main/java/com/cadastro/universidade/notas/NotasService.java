@@ -1,13 +1,13 @@
 package com.cadastro.universidade.notas;
 
 import com.cadastro.universidade.aluno.AlunoService;
-import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.disciplina.DisciplinaService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,6 +24,7 @@ public class NotasService {
         this.alunoService = alunoService;
         this.disciplinaService = disciplinaService;
     }
+
 
     public NotasDTO save(NotasDTO notasDTO){
         LOGGER.info("Salvando Turma{}",notasDTO);
@@ -43,7 +44,17 @@ public class NotasService {
         }
         throw new IllegalArgumentException(String.format("ID %s não existe", id));
     }
+    public List<Notas> findNotasByAlunoId(Long alunoId) {
+        List<Notas> notas = this.iNotasRepository.findAllByAlunoIdId(alunoId);
+            return notas;
+        }
 
-
+    public Notas findByDisciplinaId(Long disciplinaId) {
+        Optional<Notas> notasOptional = this.iNotasRepository.findById(disciplinaId);
+        if (notasOptional.isPresent()) {
+            return notasOptional.get();
+        }
+        throw new IllegalArgumentException(String.format("ID %s não existe", disciplinaId));
+    }
 
 }

@@ -1,31 +1,48 @@
-//package com.cadastro.universidade.bolitim;
-//
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.web.bind.annotation.*;
-//
-//@RestController
-//@RequestMapping("/boletins")
-//public class BoletimRest {
-//
-//    private final BoletimService boletimService;
-//
-//    @Autowired
-//    public BoletimRest(BoletimService boletimService) {
-//        this.boletimService = boletimService;
-//    }
-//
-//    @PostMapping()
-//    public BoletimDTO save(@RequestBody BoletimDTO boletimDTO){
-//        return this.boletimService.save(boletimDTO);
-//    }
-//
-//    @GetMapping("/{id}")
-//    public BoletimDTO find(@PathVariable("id") Long id) {
-//
-//
-//        return this.boletimService.findById(id);
-//    }
-//
-//
-//
-//}
+package com.cadastro.universidade.bolitim;
+
+import com.cadastro.universidade.service.ReportService;
+import net.sf.jasperreports.engine.JRException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+import java.util.List;
+
+@RestController
+@RequestMapping("/boletins")
+public class BoletimRest {
+
+    private final BoletimService boletimService;
+    private final IBoletimRepository iBoletimRepository;
+    @Autowired
+    private ReportService reportService;
+
+
+    @Autowired
+    public BoletimRest(BoletimService boletimService, IBoletimRepository iBoletimRepository) {
+        this.boletimService = boletimService;
+        this.iBoletimRepository = iBoletimRepository;
+    }
+
+    @PostMapping()
+    public BoletimDTO save(@RequestBody BoletimDTO boletimDTO) throws SQLException {
+        return this.boletimService.save(boletimDTO);
+    }
+
+    @GetMapping("/{id}")
+    public BoletimDTO find(@PathVariable("id") Long id) {
+        return this.boletimService.findById(id);
+    }
+    @GetMapping()
+    public List<Boletim> getItens() {
+        return iBoletimRepository.findAll();
+    }
+    @GetMapping("/export/{format}/{alunoId}")
+    public String gerarBoletim(@PathVariable String format, @PathVariable Long alunoId) throws FileNotFoundException, JRException {
+        return reportService.exportReport(format, alunoId);
+    }
+
+
+
+}

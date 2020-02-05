@@ -30,7 +30,6 @@ public class AlunoService {
         aluno.setTurmaId(turmaService.findTurmaById(alunoDTO.getTurmaId()));
 
 
-
         aluno = this.iAlunoRepository.save(aluno);
         return alunoDTO.of(aluno);
     }

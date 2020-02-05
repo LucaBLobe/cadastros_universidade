@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="content-language" content="pt-br" />
+        <title>AngularJS - Single Page Application</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -18,17 +17,19 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Exemplo rotas em Angular</a>
+                <a class="navbar-brand" href="/">Cadastro universidade</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#/gerencia"><span class="glyphicon glyphicon-book"></span> Gerencia</a></li>
-                <li><a href="#/secretaria"><span class="glyphicon glyphicon-comment"></span> Srecretaria</a></li>
+                <li><a href="#!/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="#!/gerencia"><span class="glyphicon glyphicon-book"></span> Gerencia</a></li>
+                <li><a href="#!/secretaria"><span class="glyphicon glyphicon-comment"></span> Srecretaria</a></li>
             </ul>
         </div>
     </nav> 
+    <div ng-view>
+        
+    </div>
 
 
-</body>
 </body>
 </html>

@@ -1,0 +1,1 @@
+alter table boletim alter column notas DECIMAL(10,2) NOT NULL;

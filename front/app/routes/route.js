@@ -1,18 +1,18 @@
 app.config(function($routeProvider){
 
     $routeProvider
-    .when('/', {
-        templateUrl : 'app/views/home.html',
+    .when('/home', {
+        templateUrl : 'app/views/home/home.html',
         controller  : 'HomeCtrl',
     })
 
     .when('/gerencia', {
-        templateUrl : 'app/views/gerencia.html',
+        templateUrl : 'app/views/gerencia/gerencia.html',
         controller  : 'AboutCtrl',
     })
 
     .when('/secretaria', {
-        templateUrl : 'app/views/secretaria.html',
+        templateUrl : 'app/views/secretaria/secretaria.html',
         controller  : 'ContactCtrl',
     })
 
