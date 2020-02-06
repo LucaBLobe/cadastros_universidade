@@ -1,6 +1,4 @@
-package com.cadastro.universidade.bolitim;
-
-import java.util.List;
+package com.cadastro.universidade.boletim;
 
 public class BoletimDTO {
 

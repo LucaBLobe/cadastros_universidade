@@ -3,15 +3,16 @@
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="content-language" content="pt-br" />
-        <title>AngularJS - Single Page Application</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Universidade</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/controllers/controller.js"></script>
     <script src="app/routes/route.js"></script>
+    <script src="app\views\secretaria\secretaria.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-default">
@@ -19,17 +20,14 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="/">Cadastro universidade</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#!/home"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                <li><a href="#!/gerencia"><span class="glyphicon glyphicon-book"></span> Gerencia</a></li>
-                <li><a href="#!/secretaria"><span class="glyphicon glyphicon-comment"></span> Srecretaria</a></li>
-            </ul>
+            <nav class="nav nav-pills flex-column flex-sm-row">
+                <a class="flex-sm-fill text-sm-center nav-link active" href="#!/home">Home</a>
+                <a class="flex-sm-fill text-sm-center nav-link active" href="#!/gerencia">Gerencia</a>
+                <a class="flex-sm-fill text-sm-center nav-link active" href="#!/secretaria">Secretaria</a>
+              </nav>
         </div>
     </nav> 
     <div ng-view>
-        
     </div>
-
-
 </body>
 </html>

@@ -1,8 +1,7 @@
-package com.cadastro.universidade.bolitim;
+package com.cadastro.universidade.boletim;
 
 import com.cadastro.universidade.aluno.AlunoService;
 import com.cadastro.universidade.aluno.IAlunoRepository;
-import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.disciplina.DisciplinaService;
 import com.cadastro.universidade.disciplina.IDisciplinaRepository;
 import com.cadastro.universidade.notas.INotasRepository;
@@ -18,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.sql.*;
 import java.util.List;
 import java.util.Optional;
-import java.util.prefs.Preferences;
 
 @Service
 public class BoletimService {
@@ -26,8 +24,6 @@ public class BoletimService {
     private static final Logger LOGGER = LoggerFactory.getLogger(BoletimService.class);
     private final IBoletimRepository iBoletimRepository;
     private final AlunoService alunoService;
-    private final DisciplinaService disciplinaService;
-    private final TurmaService turmaService;
     private final NotasService notasService;
 
     @Autowired
@@ -36,8 +32,6 @@ public class BoletimService {
 
 
         this.alunoService = alunoService;
-        this.disciplinaService = disciplinaService;
-        this.turmaService = turmaService;
         this.notasService = notasService;
     }
 
@@ -80,11 +74,14 @@ public class BoletimService {
             LOGGER.info("Recebendo find by ID... id: [{}]", BoletimDTO.of(boletimOptional.get()));
             return BoletimDTO.of(boletimOptional.get());
         }
-        throw new IllegalArgumentException(String.format("ID %s não existe", id));
+        throw new IllegalArgumentException(String.format("ID %s não ex'iste", id));
     }
-
     public List<Boletim> findBoletimByAlunoId(Long alunoId) {
-        List<Boletim> boletim = this.iBoletimRepository.findAllByAlunoIdId(alunoId);
+        List<Boletim> boletim = iBoletimRepository.findAllByAlunoId(alunoId);
+
         return boletim;
     }
+
 }
+
+

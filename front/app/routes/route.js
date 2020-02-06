@@ -13,7 +13,7 @@ app.config(function($routeProvider){
 
     .when('/secretaria', {
         templateUrl : 'app/views/secretaria/secretaria.html',
-        controller  : 'ContactCtrl',
+        controller  : 'SecretariaCtrl',
     })
 
     .otherwise ({ redirectTo: '/' });

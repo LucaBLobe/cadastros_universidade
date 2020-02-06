@@ -1,11 +1,13 @@
+
+
 app.controller('HomeCtrl', function($scope){
     $scope.title = 'Bem-vindo, esta é nossa página principal!';
 });
 
 app.controller('ContactCtrl', function($scope){
-    $scope.title = 'Entre em contato conosco!';
+    $scope.title = 'Controle e cadastros de alunos.';
 });
 
 app.controller('AboutCtrl', function($scope){
-    $scope.title = 'Olá, esta é a página sobre da empresa!';
+    $scope.title = 'controle de turmas e cadastro de corpo docente';
 });

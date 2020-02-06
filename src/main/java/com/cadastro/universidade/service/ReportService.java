@@ -1,8 +1,8 @@
 package com.cadastro.universidade.service;
 
-import com.cadastro.universidade.bolitim.Boletim;
-import com.cadastro.universidade.bolitim.BoletimService;
-import com.cadastro.universidade.bolitim.IBoletimRepository;
+import com.cadastro.universidade.boletim.Boletim;
+import com.cadastro.universidade.boletim.BoletimService;
+import com.cadastro.universidade.boletim.IBoletimRepository;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +20,12 @@ public class ReportService {
 
     @Autowired
     private final BoletimService boletimService;
+    private final IBoletimRepository iBoletimRepository;
 
-    public ReportService(BoletimService boletimService) {
+    public ReportService(BoletimService boletimService, IBoletimRepository iBoletimRepository) {
         this.boletimService = boletimService;
+        this.iBoletimRepository = iBoletimRepository;
     }
-
-
     public String exportReport(String reportFormat, Long alunoId) throws FileNotFoundException, JRException {
         String path = "C:\\jasper";
         List<Boletim> boletim = boletimService.findBoletimByAlunoId(alunoId);

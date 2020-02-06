@@ -1,8 +1,7 @@
-package com.cadastro.universidade.bolitim;
+package com.cadastro.universidade.boletim;
 
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "boletim")

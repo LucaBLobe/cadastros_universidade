@@ -1,33 +1,33 @@
 package com.cadastro.universidade.aluno;
 
-//import com.cadastro.universidade.service.ReportService;
-import net.sf.jasperreports.engine.JRException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.FileNotFoundException;
+import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5000")
 @RequestMapping("/alunos")
 public class AlunoRest {
 
     private final AlunoService alunoService;
+    private final IAlunoRepository iAlunoRepository;
 
     @Autowired
-    public AlunoRest(AlunoService alunoService) {
+    public AlunoRest(AlunoService alunoService, IAlunoRepository iAlunoRepository) {
         this.alunoService = alunoService;
+        this.iAlunoRepository = iAlunoRepository;
     }
-//    @Autowired
-//    private ReportService reportService;
-
 
     @PostMapping()
-    public AlunoDTO save(@RequestBody AlunoDTO alunoDTO){
-        return  this.alunoService.save(alunoDTO);
+    public AlunoDTO save(@RequestBody AlunoDTO alunoDTO) {
+        return this.alunoService.save(alunoDTO);
     }
 
-//    @GetMapping("/report/{format}")
-//    public String generateReport(@PathVariable String format) throws FileNotFoundException, JRException {
-//        return reportService.exportReport(format);
-//    }
+    @GetMapping()
+    public List<Aluno> getItens() {
+        return iAlunoRepository.findAll();
+    }
 }
+
