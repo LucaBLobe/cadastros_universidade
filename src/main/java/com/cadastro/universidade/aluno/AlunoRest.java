@@ -20,7 +20,7 @@ public class AlunoRest {
         this.iAlunoRepository = iAlunoRepository;
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public AlunoDTO save(@RequestBody AlunoDTO alunoDTO) {
         return this.alunoService.save(alunoDTO);
     }

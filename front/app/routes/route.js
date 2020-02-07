@@ -8,7 +8,7 @@ app.config(function($routeProvider){
 
     .when('/gerencia', {
         templateUrl : 'app/views/gerencia/gerencia.html',
-        controller  : 'AboutCtrl',
+        controller  : 'GerenciaCtrl',
     })
 
     .when('/secretaria', {
