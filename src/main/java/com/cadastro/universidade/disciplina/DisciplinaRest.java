@@ -30,4 +30,10 @@ public class DisciplinaRest {
     public List<Disciplina> getDisciplinas() {
         return iDisciplinaRepository.findAll();
     }
+//
+//    @GetMapping()
+//    public List<Disciplina> getDisciplinasTurma(@PathVariable("id") Long id) {
+//        return iDisciplinaRepository.findAllByTurmaIdId(id);
+//    }
 }
+

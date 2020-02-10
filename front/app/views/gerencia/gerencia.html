@@ -4,47 +4,48 @@
 
 </html>
 
- 
-<div>
+<div class="jumbotron">
+  <div>
     <h1>Gerencia</h1>
     <p>{{title}}</p>
 
     <app-dashboard></app-dashboard>
     <div>
-        <div class="form-group">
-            <label>Cadastrar Professor</label>
-            <div id="nome" ng-init=postProfessor>
-                <div class="form-group">
-                    <label for="nomeProfessor">Nome</label>
-                    <input type="text" class="form-control" ng-model="nomeProfessor">
-                    <button type="submit" class="btn btn-primary"
-                        ng-click="postProfessor(nomeProfessor)">Cadastrar</button>
-                </div>
-            </div>
+      <div class="form-group">
+        <label>Cadastrar Professor</label>
+        <div id="nome" ng-init=postProfessor>
+          <div class="form-group">
+            <label for="nomeProfessor">Nome</label>
+            <input type="text" class="form-control" ng-model="nomeProfessor">
+            <button class="btn btn-primary" ng-click="postProfessor(nomeProfessor)">Cadastrar</button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div>
+  <div>
     <form>
       <div class="form-group">
         <label for="nomeDisciplina">Cadastrar Disciplina</label>
         <div id="nomeDisciplina">
-      <div class="form-group">
-        <label for="nomeDisciplina">Nome</label>
-        <input type="text" class="form-control" ng-model="nomeDisciplina" >
-      </div>
-      <mat-form-field>
-        <div id="professorId" ng-init="getProfessorData()">
-        <mat-label id="labelEscolha">Selecione Professor</mat-label>
-        <select id="select" ng-model="professorId" value="professorId" matNativeControl required>
-          <option id="option" ng-repeat="professor in professorList" label={{professor.nome}} value={{professor.id}}>
-          </option>
-        </select><span class="required">*</span>
-      </mat-form-field>
+          <div class="form-group">
+            <label for="nomeDisciplina">Nome</label>
+            <input type="text" class="form-control" ng-model="nomeDisciplina">
+          </div>
+          <mat-form-field>
+            <div id="professorId" ng-init="getProfessorData()">
+              <mat-label id="labelEscolha">Selecione Professor</mat-label>
+              <select id="select" ng-model="professorId" value="professorId" matNativeControl required>
+                <option id="option" ng-repeat="professor in professorList" label={{professor.nome}}
+                  value={{professor.id}}>
+                </option>
+              </select><span class="required">*</span>
+          </mat-form-field>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary" ng-click = "postDisciplina(nomeDisciplina, professorId)">Cadastrar</button>
+      </div>
+      <button type="submit" class="btn btn-primary"
+        ng-click="postDisciplina(nomeDisciplina, professorId)">Cadastrar</button>
   </div>
 
   <div>
@@ -52,28 +53,60 @@
       <div class="form-group">
         <label for="cadastrarTurmas">Cadastrar Turmas</label>
         <div id="nomeTurma">
-      <div class="form-group">
-        <label for="nomeTurma">Sigla</label>
-        <input type="text" class="form-control" ng-model="nomeTurma" >
-      </div>
-      <div class="serieTurma">
-        <label for="serieTurma">Série</label>
-        <input type="text" class="form-control" ng-model="serieTurma" >
-      </div>
-      <div class="form-group">
-        <label for="periodoTurma">Período</label>
-        <input type="text" class="form-control" ng-model="periodoTurma">
-      </div>
-      
-      <mat-form-field>
-        <div id="disciplinasId" ng-init="getTurmaData()">
-        <mat-label id="labelEscolha">Selecione disciplinas</mat-label>
-        <select id="select" ng-model="turmaId" value="turmaId" matNativeControl required>
-          <option id="option" ng-repeat="turma in turmaList" label={{turma.sigla}} value={{turma.id}}>
-          </option>
-        </select><span class="required">*</span>
-      </mat-form-field>
+          <div class="form-group">
+            <label for="nomeTurma">Sigla</label>
+            <input type="text" class="form-control" ng-model="nomeTurma">
+          </div>
+          <div class="serieTurma">
+            <label for="serieTurma">Série</label>
+            <input type="text" class="form-control" ng-model="serieTurma">
+          </div>
+          <div class="form-group">
+            <label for="periodoTurma">Período</label>
+            <input type="text" class="form-control" ng-model="periodoTurma">
+          </div>
+
+          <mat-form-field>
+            <div id="disciplinasId" ng-init="getDisciplinaData()">
+              <mat-label id="labelEscolha">Selecione disciplinas</mat-label>
+              <select id="select" ng-model="disciplinaId" value="disciplinaId" matNativeControl required>
+                <option id="option" ng-repeat="disciplina in disciplinaList" label={{disciplina.nome}}
+                  value={{disciplina.id}}>
+                </option>
+              </select><span class="required">*</span>
+          </mat-form-field>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary" ng-click = "postAluno(nomeAluno, turmaId)">Cadastrar</button>
+      </div>
+      <button type="submit" class="btn btn-primary"
+        ng-click="postTurma(periodoTurma, nomeTurma, serieTurma, disciplinaId)">Cadastrar</button>
   </div>
+
+  <div>
+    <form>
+      <div class="form-group">
+        <label for="notas">Atribuir nova nota</label>
+        <div id="nomeAluno">
+          <mat-form-field>
+            <div id="professorId" ng-init="getTurmaData()">
+              <mat-label id="labelEscolha">Selecione turma</mat-label>
+              <select id="select" ng-model="turma.id" value={{turma.id}} ng-change="getAlunoData(turma.id)"
+                matNativeControl required>
+                <option id="option" ng-repeat="turma in turmaList" label={{turma.sigla}} value={{turma.id}}>
+                </option>
+              </select><span class="required">*</span>
+          </mat-form-field>
+          <div id="professorId">
+            <mat-label id="labelEscolha">Selecione Aluno</mat-label>
+            <select id="select" ng-model="alunoId" value="alunoId" matNativeControl required>
+              <option id="option" ng-repeat="aluno in alunoList" label={{aluno.nome}} value={{turma.id}}>
+              </option>
+            </select><span class="required">*</span>
+            </mat-form-field>
+          </div>
+        </div>
+
+      </div>
+      <button type="submit" class="btn btn-primary"
+        ng-click="postDisciplina(nomeDisciplina, professorId)">Cadastrar</button>
+  </div>
+</div>

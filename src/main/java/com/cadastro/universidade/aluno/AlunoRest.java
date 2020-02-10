@@ -29,5 +29,10 @@ public class AlunoRest {
     public List<Aluno> getItens() {
         return iAlunoRepository.findAll();
     }
+
+    @GetMapping("/{id}")
+    public List<Aluno> getAlunoTurma(@PathVariable("id") Long id) {
+        return iAlunoRepository.findAllByTurmaIdId(id);
+    }
 }
 

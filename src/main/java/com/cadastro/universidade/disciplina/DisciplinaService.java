@@ -1,5 +1,6 @@
 package com.cadastro.universidade.disciplina;
 
+import com.cadastro.universidade.boletim.Boletim;
 import com.cadastro.universidade.professor.Professor;
 import com.cadastro.universidade.professor.ProfessorService;
 import org.slf4j.Logger;
@@ -7,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,5 +43,11 @@ public class DisciplinaService {
         }
         throw new IllegalArgumentException(String.format("ID %s não existe", id));
     }
+
+//    public Disciplina findByTurmaId(Long id){
+//        List<Disciplina> disciplina = iDisciplinaRepository.findAllByTurmaIdId(id);
+//
+//        return disciplina;
+//    }
 
 }

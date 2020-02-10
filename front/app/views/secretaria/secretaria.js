@@ -84,5 +84,25 @@ app.controller('SecretariaCtrl', function($scope, $http){
         });
     };
 
+    $scope.getBoletimHTMLData = function (alunoId) {
+        var data = {
+            alunoId: alunoId
+        };
+
+        $http.get('http://localhost:8080/boletins/export/html/'+ alunoId, JSON.stringify(data)).then(function (response) {
+            if (response.data)
+                 
+                $scope.BoletimPDF = response.data;
+                $scope.msg = "Boltim gerado";
+ 
+        }, function () {
+ 
+            $scope.msg = "Erro em buscar a Boletim";
+ 
+        });
+    };
+
+    
+
 });
 
