@@ -87,7 +87,7 @@
         <label for="notas">Atribuir nova nota</label>
         <div id="nomeAluno">
           <mat-form-field>
-            <div id="professorId" ng-init="getTurmaData()">
+            <div id="turma" ng-init="getTurmaData()">
               <mat-label id="labelEscolha">Selecione turma</mat-label>
               <select id="select" ng-model="turma.id" value={{turma.id}} ng-change="getAlunoData(turma.id)"
                 matNativeControl required>
@@ -95,18 +95,53 @@
                 </option>
               </select><span class="required">*</span>
           </mat-form-field>
-          <div id="professorId">
+          <div id="aluno">
             <mat-label id="labelEscolha">Selecione Aluno</mat-label>
-            <select id="select" ng-model="alunoId" value="alunoId" matNativeControl required>
-              <option id="option" ng-repeat="aluno in alunoList" label={{aluno.nome}} value={{turma.id}}>
+            <select id="select" ng-model="alunoId" value={{aluno.id}} matNativeControl required>
+              <option id="option" ng-repeat="aluno in alunoList" label={{aluno.nome}} value={{aluno.id}}>
               </option>
             </select><span class="required">*</span>
             </mat-form-field>
           </div>
-        </div>
 
+          <mat-label id="labelEscolha">Selecione Disciplina</mat-label>
+          <select id="select" ng-model="disciplina" value={{disciplina.id}} matNativeControl required>
+            <option id="option" ng-repeat="disciplina in disciplinaList" label={{disciplina.nome}}
+              value={{disciplina.id}}>
+            </option>
+          </select><span class="required">*</span>
+          </mat-form-field>
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary"
-        ng-click="postDisciplina(nomeDisciplina, professorId)">Cadastrar</button>
+  </div>
+  <div class="form-group">
+    <label for="periodoTurma">nota</label>
+    <input type="text" class="form-control" ng-model="notaAluno">
+    <button type="submit" class="btn btn-primary" ng-click="postNota(notaAluno, alunoId, disciplina)">Cadastrar</button>
+  </div>
+  <div>
+    <div class="form-group">
+      <label>atualizar Boletim</label>
+      <div id="Aluno">
+        <mat-form-field>
+          <div id="Boletim">
+            <mat-label id="labelEscolha">Selecione turma</mat-label>
+            <select id="select" ng-model="turmaId" value={{turma.id}} ng-change="getAluno2Data(turma.id)"
+              matNativeControl required>
+              <option id="option" ng-repeat="turma in turmaList" label={{turma.sigla}} value={{turma.id}}>
+              </option>
+            </select><span class="required">*</span>
+        </mat-form-field>
+        <div id="Boletim">
+          <mat-label id="labelEscolha">Selecione Aluno</mat-label>
+          <select id="select" ng-model="alunoId" value={{aluno.id}} matNativeControl required>
+            <option id="option" ng-repeat="aluno in aluno2List" label={{aluno.nome}} value={{aluno.id}}>
+            </option>
+          </select><span class="required">*</span>
+          </mat-form-field>
+          <button class="btn btn-primary" ng-click="updateBoletim(alunoId)">Cadastrar</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

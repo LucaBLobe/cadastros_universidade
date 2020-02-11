@@ -27,7 +27,7 @@ public class BoletimRest {
         this.reportService = reportService;
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public BoletimDTO save(@RequestBody BoletimDTO boletimDTO) throws SQLException {
         return this.boletimService.save(boletimDTO);
     }

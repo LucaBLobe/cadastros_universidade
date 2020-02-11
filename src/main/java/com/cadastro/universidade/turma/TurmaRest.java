@@ -22,7 +22,7 @@ public class TurmaRest {
         this.iTurmaRepository = iTurmaRepository;
     }
 
-    @PostMapping()
+    @PostMapping("/save")
     public TurmaDTO save(@RequestBody TurmaDTO turmaDTO) {
         return this.turmaService.save(turmaDTO);
     }

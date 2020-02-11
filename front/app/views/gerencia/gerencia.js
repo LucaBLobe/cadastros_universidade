@@ -143,5 +143,64 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         });
 
     };
+    
+    $scope.getAluno2Data = function (turmaId) {
+        var data = {
+            turmaId: turmaId
+        };
+
+        $http.get('http://localhost:8080/alunos/' + turmaId, JSON.stringify(data)).then(function (response) {
+            if (response.data) {
+                $scope.aluno2List ="";
+                $scope.aluno2List = response.data;
+            }
+
+        }, function () {
+
+            $scope.msg = "Erro em buscar a Aluno";
+
+        });
+
+    };
+
+    $scope.postNota = function (nota, alunoId, disciplinaId) {
+
+        var data = {
+            nota: nota,
+            alunoId: alunoId,
+            disciplinaId: disciplinaId
+        };
+
+        $http.post('http://localhost:8080/notas/save', JSON.stringify(data)).then(function (response) {
+            if (response.data)
+
+            $scope.msg = "nota cadastrada";
+
+
+        }, function () {
+
+            $scope.msg = "Erro em Cadastrar Nota";
+
+        });
+    };
+
+    $scope.updateBoletim = function (alunoId) {
+
+        var data = {
+            alunoId: alunoId,
+        };
+
+        $http.post('http://localhost:8080/boletins/save', JSON.stringify(data)).then(function (response) {
+            if (response.data)
+
+            $scope.msg = "Boletim atualizado";
+
+
+        }, function () {
+
+            $scope.msg = "Erro ao atualizar";
+
+        });
+    };
 
 });
