@@ -1,6 +1,7 @@
 package com.cadastro.universidade.turma;
 
 
+import com.cadastro.universidade.disciplina.Disciplina;
 import com.cadastro.universidade.disciplina.DisciplinaService;
 import com.cadastro.universidade.disciplina.IDisciplinaRepository;
 import org.slf4j.Logger;
@@ -45,6 +46,19 @@ public class TurmaService {
             return turmaOptional.get();
         }
         throw new IllegalArgumentException(String.format("ID %s não existe", id));
+    }
+
+    public List<Disciplina> findByTurmaId(Long id) {
+        Optional<Turma> turmaOptional = iTurmaRepository.findById(id);
+        if (turmaOptional.isPresent()) {
+            Turma turma = turmaOptional.get();
+            List<Disciplina> disciplina = turma.getDisciplinaId();
+
+            return disciplina;
+        }
+        throw new IllegalArgumentException(String.format("ID %s não existe", id));
+
+
     }
 }
 
