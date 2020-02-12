@@ -68,15 +68,15 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
             disciplinaId: disciplinaId
         };
 
-        $http.post('http://localhost:8080/turma/save', JSON.stringify(data)).then(function (response) {
+        $http.post('http://localhost:8080/turma/save', (data)).then(function (response) {
             if (response.data)
 
-                $scope.disciplinaList = disciplinaId;
-            $scope.msg = "Turma cadastrada";
+
+                $scope.msg = "Turma cadastrada";
 
 
-        }, function () {
-
+        }, function (response) {
+            console.log(response.data)
             $scope.msg = "Erro em Cadastrar Turma";
 
         });
@@ -132,7 +132,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
 
         $http.get('http://localhost:8080/alunos/' + turmaId, JSON.stringify(data)).then(function (response) {
             if (response.data) {
-                $scope.alunoList ="";
+                $scope.alunoList = "";
                 $scope.alunoList = response.data;
             }
 
@@ -143,7 +143,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         });
 
     };
-    
+
     $scope.getAluno2Data = function (turmaId) {
         var data = {
             turmaId: turmaId
@@ -151,7 +151,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
 
         $http.get('http://localhost:8080/alunos/' + turmaId, JSON.stringify(data)).then(function (response) {
             if (response.data) {
-                $scope.aluno2List ="";
+                $scope.aluno2List = "";
                 $scope.aluno2List = response.data;
             }
 
@@ -174,7 +174,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         $http.post('http://localhost:8080/notas/save', JSON.stringify(data)).then(function (response) {
             if (response.data)
 
-            $scope.msg = "nota cadastrada";
+                $scope.msg = "nota cadastrada";
 
 
         }, function () {
@@ -193,7 +193,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         $http.post('http://localhost:8080/boletins/save', JSON.stringify(data)).then(function (response) {
             if (response.data)
 
-            $scope.msg = "Boletim atualizado";
+                $scope.msg = "Boletim atualizado";
 
 
         }, function () {

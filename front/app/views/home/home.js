@@ -42,5 +42,24 @@ app.controller('HomeCtrl', function($scope, $http){
 
     };
 
+    $scope.getDisciplinaData = function (turmaId) {
+        var data = {
+            turmaId: turmaId
+        };
+
+        $http.get('http://localhost:8080/disciplinas/turma/' + turmaId, JSON.stringify(data)).then(function (response) {
+            if (response.data) {
+                $scope.disciplinaList ="";
+                $scope.disciplinaList = response.data;
+            }
+
+        }, function () {
+
+            $scope.msg = "Erro em buscar a Disciplinas";
+
+        });
+
+    };
+
 });
 
