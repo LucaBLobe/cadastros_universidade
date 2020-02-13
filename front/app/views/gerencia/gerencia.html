@@ -89,7 +89,7 @@
           <mat-form-field>
             <div id="turma" ng-init="getTurmaData()">
               <mat-label id="labelEscolha">Selecione turma</mat-label>
-              <select id="select" ng-model="turma.id" value={{turma.id}} ng-change="getAlunoData(turma.id)"
+              <select id="select" ng-model="turma.id" value={{turma.id}} ng-change="getAlunoData(turma.id);getDisciplinaTurmaData(turma.id)"
                 matNativeControl required>
                 <option id="option" ng-repeat="turma in turmaList" label={{turma.sigla}} value={{turma.id}}>
                 </option>
@@ -106,7 +106,7 @@
 
           <mat-label id="labelEscolha">Selecione Disciplina</mat-label>
           <select id="select" ng-model="disciplina" value={{disciplina.id}} matNativeControl required>
-            <option id="option" ng-repeat="disciplina in disciplinaList" label={{disciplina.nome}}
+            <option id="option" ng-repeat="disciplina in disciplinaTurmaList" label={{disciplina.nome}}
               ng-value={{disciplina.id}}>
             </option>
           </select><span class="required">*</span>

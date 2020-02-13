@@ -111,6 +111,26 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
 
     };
 
+    
+    $scope.getDisciplinaTurmaData = function (turmaId) {
+        var data = {
+            turmaId: turmaId
+        };
+
+        $http.get('http://localhost:8080/disciplinas/turma/' + turmaId, JSON.stringify(data)).then(function (response) {
+            if (response.data) {
+                $scope.disciplinaTurmaList ="";
+                $scope.disciplinaTurmaList = response.data;
+            }
+
+        }, function () {
+
+            $scope.msg = "Erro em buscar a Disciplinas";
+
+        });
+
+    };
+
     $scope.getTurmaData = function (id, periodo, sigla, serie, disciplinaId) {
         var data = {
             id,
