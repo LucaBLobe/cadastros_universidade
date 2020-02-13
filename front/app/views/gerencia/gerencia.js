@@ -5,10 +5,10 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         var data = {
             nome: nome,
         };
-
-        $http.post('http://localhost:8080/professores/save', JSON.stringify(data)).then(function (response) {
-            if (response.data)
-
+ 
+        $http.post('http://localhost:8080/professores/save', JSON.stringify(data)).then(function (response) {    
+        if (response.data)
+                $scope.professorList.push(response.data);
                 $scope.msg = "Professor cadastrado";
 
         }, function () {
@@ -46,7 +46,8 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
 
         $http.post('http://localhost:8080/disciplinas/save', JSON.stringify(data)).then(function (response) {
             if (response.data)
-
+                $scope.disciplinaList.push(response.data);
+                $scope.getDisciplinaData();
                 $scope.msg = "Disciplina cadastrada";
 
         }, function () {
@@ -80,7 +81,7 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
         $http.post('http://localhost:8080/turma/save', (data)).then(function (response) {
             if (response.data)
 
-
+                                
                 $scope.msg = "Turma cadastrada";
 
 

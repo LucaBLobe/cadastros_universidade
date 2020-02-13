@@ -17,8 +17,8 @@
           <div class="form-group">
             <label for="nomeProfessor">Nome</label>
             <input type="text" class="form-control" ng-model="nomeProfessor">
-            <button class="btn btn-primary" ng-click="postProfessor(nomeProfessor)">Cadastrar</button>
-          </div>
+            <button class="btn btn-primary" ng-click="postProfessor(nomeProfessor);getProfessorData()">Cadastrar</button>
+          </div >
         </div>
       </div>
     </div>
@@ -67,9 +67,9 @@
           </div>
 
           <mat-form-field>
-            <div id="disciplinasId" ng-init="getDisciplinaData()">
-              <mat-label id="labelEscolha">Selecione disciplinas</mat-label>
-              <select id="select" ng-model="disciplinaId" value="disciplinaId" matNativeControl required multiple>
+            <div id="disciplinasId">
+              <mat-label id="labelEscolha"  ng-init="getDisciplinaData()">Selecione disciplinas</mat-label>
+              <select id="select" ng-model="disciplinaId" value={{disciplina}} multiple>
                 <option id="option" ng-repeat="disciplina in disciplinaList" label={{disciplina.nome}}
                   value={{disciplina}}>
                 </option>
