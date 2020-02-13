@@ -15,7 +15,7 @@ public class Disciplina {
     @Column(name = "nome", nullable = false,  length = 100)
     private String nome;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "professor_id", referencedColumnName = "id")
     private Professor professorId;
 

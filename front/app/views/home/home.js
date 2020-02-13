@@ -61,5 +61,25 @@ app.controller('HomeCtrl', function($scope, $http){
 
     };
 
+    $scope.deleteAlunoData = function (alunoId) {
+        var data = {
+            alunoId: alunoId
+        };
+
+        $http.delete('http://localhost:8080/alunos/' + alunoId, JSON.stringify(data)).then(function (response) {
+            if (response.data) {
+
+                $scope.msg = "Aluno Deletado";
+
+            }
+
+        }, function () {
+
+            $scope.msg = "Erro em deletar Aluno";
+
+        });
+
+    };
+
 });
 

@@ -3,11 +3,16 @@ package com.cadastro.universidade.notas;
 import com.cadastro.universidade.aluno.Aluno;
 import com.cadastro.universidade.disciplina.Disciplina;
 
+import javax.validation.constraints.NotNull;
+
 public class NotasDTO {
 
     private Long id;
+    @NotNull
     private Double nota;
+    @NotNull
     private Long alunoId;
+    @NotNull
     private Long disciplinaId;
 
     public NotasDTO() {

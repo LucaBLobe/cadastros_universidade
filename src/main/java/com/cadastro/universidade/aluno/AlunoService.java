@@ -41,5 +41,9 @@ public class AlunoService {
         throw new IllegalArgumentException(String.format("ID %s não existe", id));
     }
 
+    public void delete(Long id) {
+        LOGGER.info("Executando delete para Aluno de ID: [{}]", id);
+        this.iAlunoRepository.deleteById(id);
+    }
 
 }

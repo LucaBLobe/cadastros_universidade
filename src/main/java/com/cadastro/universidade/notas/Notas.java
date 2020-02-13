@@ -16,11 +16,11 @@ public class Notas {
     @Column(name = "nota", nullable = false)
     private Double nota;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "aluno_id", referencedColumnName = "id")
     private Aluno alunoId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "disciplina_id", referencedColumnName = "id")
     private Disciplina disciplinaId;
 

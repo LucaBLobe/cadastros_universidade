@@ -34,5 +34,13 @@ public class AlunoRest {
     public List<Aluno> getAlunoTurma(@PathVariable("id") Long id) {
         return iAlunoRepository.findAllByTurmaIdId(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteAluno(@PathVariable("id") Long id) {
+        this.alunoService.delete(id);
+    }
+
 }
+
+
 

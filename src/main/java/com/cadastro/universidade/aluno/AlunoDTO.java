@@ -1,9 +1,14 @@
 package com.cadastro.universidade.aluno;
 
+import javax.validation.constraints.NotNull;
+
 public class AlunoDTO {
 
+
     private Long id;
+    @NotNull
     private String nome;
+    @NotNull
     private Long turmaId;
 
 

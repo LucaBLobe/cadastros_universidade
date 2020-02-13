@@ -1,8 +1,11 @@
 package com.cadastro.universidade.professor;
 
+import javax.validation.constraints.NotNull;
+
 public class ProfessorDTO {
 
     private Long id;
+    @NotNull
     private String nome;
 
     public ProfessorDTO() {

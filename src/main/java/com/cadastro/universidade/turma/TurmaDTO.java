@@ -2,14 +2,19 @@ package com.cadastro.universidade.turma;
 
 import com.cadastro.universidade.disciplina.Disciplina;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class TurmaDTO {
 
     private Long id;
+    @NotNull
     private String periodo;
+    @NotNull
     private String serie;
+    @NotNull
     private String sigla;
+    @NotNull
     private List<Disciplina> disciplinaId;
 
     public TurmaDTO() {

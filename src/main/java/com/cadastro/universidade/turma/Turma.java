@@ -25,7 +25,7 @@ public class Turma {
     @Column(name = "sigla", nullable = false,  length = 100)
     private String sigla;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "disciplina_turma", joinColumns = {@JoinColumn(name = "turma_id")}, inverseJoinColumns = {@JoinColumn(name="disciplina_id")})
     private List<Disciplina> disciplinaId;
 

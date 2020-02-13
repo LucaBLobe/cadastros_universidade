@@ -63,17 +63,18 @@
                 <tr>
                     <th>id</th>
                     <th>nome</th>
-                 
+                    <th class="actions">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="aluno in alunoList" >
                     <td>{{aluno.id}}</td>
                     <td>{{aluno.nome}}</td>
-
+                    <td class="actions">
+                    <a class="btn btn-danger btn-xs" href="#!" data-toggle="modal" data-target="#delete-modal"
+                    ng-click="deleteAlunoData(aluno.id)">Excluir</a></td>
                 </tr>
             </tbody>
         </table>
     </div>
-
 </div>

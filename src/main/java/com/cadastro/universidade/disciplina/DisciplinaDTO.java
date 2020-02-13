@@ -5,12 +5,16 @@ import com.cadastro.universidade.notas.Notas;
 import com.cadastro.universidade.professor.Professor;
 import com.cadastro.universidade.turma.Turma;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 public class DisciplinaDTO {
 
+
     private Long id;
+    @NotNull
     private String nome;
+    @NotNull
     private Long professorId;
 
 
