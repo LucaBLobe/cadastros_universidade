@@ -60,12 +60,21 @@ app.controller('GerenciaCtrl', function ($scope, $http) {
 
     $scope.postTurma = function (periodo, sigla, serie, disciplinaId) {
 
+        var disciplinas = [];
+
+        for (let i = 0; i < disciplinaId.length; i++) {
+            const element = disciplinaId[i];
+
+            disciplinas.push(JSON.parse(element));
+            
+        }
+        console.log(disciplinaId);
 
         var data = {
             periodo: periodo,
             sigla: sigla,
             serie: serie,
-            disciplinaId: disciplinaId
+            disciplinaId: disciplinas
         };
 
         $http.post('http://localhost:8080/turma/save', (data)).then(function (response) {
